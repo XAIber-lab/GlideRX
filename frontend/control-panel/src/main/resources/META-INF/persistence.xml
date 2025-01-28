@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+                                 http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
+             version="2.1">
+
+    <persistence-unit name="GlideRXPersistenceUnit" transaction-type="RESOURCE_LOCAL">
+        <!-- JPA provider: Hibernate -->
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+        <!-- JDBC connection settings -->
+        <properties>
+            <property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver"/>
+            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/gliderx"/>
+            <property name="hibernate.connection.username" value="root"/>
+            <property name="hibernate.connection.password" value="my-secret-pw"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+            
+            <!-- property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+            <property name="hibernate.driver" value="com.mysql.cj.jdbc.Driver" />
+            <property name="hibernate.url" value="jdbc:mysql://localhost:3306/gliderx" />
+            <property name="hibernate.username" value="root" />
+            <property name="hibernate.password" value="my-secret-pw" /-->
+
+            <!-- Enable Hibernate's automatic session context management -->
+            <property name="hibernate.current_session_context_class" value="thread" />
+
+            <!-- Disable the second-level cache -->
+            <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider" />
+
+            <!-- Drop and re-create the database schema on startup -->
+            <!--property name="hibernate.hbm2ddl.auto" value="update" /-->
+
+            <!-- Show SQL queries -->
+            <!--property name="hibernate.show_sql" value="true" /-->
+        </properties>
+    </persistence-unit>
+</persistence>

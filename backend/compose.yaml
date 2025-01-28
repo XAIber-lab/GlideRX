@@ -1,0 +1,63 @@
+services:
+  trajectory-manager:
+    build:
+      context: ./trajectory-manager
+    image: gliderx/trajectory-manager:1.0.0
+    container_name: manager
+    depends_on:
+      - rabbitmq
+      - mysql
+    env_file: "trajectory-services.env"
+    entrypoint: ["python", "manager.py"]
+    networks:
+      - gliderx-network
+  trajectory-predictor:
+    build:
+      context: ./trajectory-predictor
+    image: gliderx/trajectory-predictor:1.0.0
+    container_name: predictor
+    depends_on:
+      - rabbitmq
+      - mysql
+    env_file: "trajectory-services.env"
+    entrypoint: ["python", "predictor.py"]
+    networks:
+      - gliderx-network
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - gliderx-network
+    healthcheck:
+      test: ["CMD", "rabbitmqctl", "status"]
+      interval: 30s
+      retries: 5
+      start_period: 30s
+      timeout: 10s
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    env_file: "mysql-service.env"
+    volumes:
+      - ./mysql:/docker-entrypoint-initdb.d
+      - gliderx_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      - gliderx-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "--host=localhost", "--user=root", "--password=my-secret-pw"]
+      interval: 30s
+      retries: 5
+      start_period: 30s
+      timeout: 10s
+
+networks:
+  gliderx-network:
+    driver: bridge
+
+volumes:
+  gliderx_data:

@@ -1,0 +1,48 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Dec 27, 2024, 6:08:11 PM
+    Author     : davide
+*/
+
+.root {
+	-fx-border-color: #C8C8C8;
+}
+
+.FLARMLog {
+        -fx-control-inner-background: black;
+        -fx-text-fill: white;
+        -fx-font-family: "Monospace";
+        -fx-font-size: 12pt;
+}
+
+.right-panel {
+    -fx-alignment: center; /* Vertically and horizontally center all children */
+    -fx-spacing: 50px;      /* Spacing between children */
+    -fx-padding: 20px;      /* Padding around VBox */
+}
+
+.stats {
+    -fx-alignment: center; /* Vertically and horizontally center all children */
+}
+
+/* Style the Label */
+.label {
+    -fx-font-size: 12px; 
+    -fx-text-fill: gray;
+}
+
+/* Style the Value Label */
+.value-label {
+    -fx-font-size: 32px; 
+    -fx-text-fill: #9e9e9e;
+    -fx-effect: innershadow(three-pass-box, rgba(0,0,0,0.7), 6, 0.0, 0, 2);
+}
+
+/* Center align HBox content */
+.hbox {
+    -fx-alignment: center; /* Center content horizontally */
+    -fx-spacing: 10px;     /* Spacing between label and value */
+}

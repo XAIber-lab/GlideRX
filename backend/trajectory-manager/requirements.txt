@@ -1,0 +1,7 @@
+torch
+pika
+pymysql
+cryptography
+python-dotenv
+numpy
+scipy
