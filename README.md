@@ -2,7 +2,7 @@
 
 ![morphing](https://github.com/user-attachments/assets/1db09122-a414-475e-87ac-a0e83b4320d0)
 
-This repository contains the code related to the paper: "_GlideRX: Enhancing Situation Awareness for Collision Prevention in Glider Flight through Extended Reality_".
+This repository contains the code related to the paper: "_GlideRX: Enhancing Situation Awareness for Collision Prevention in Glider Flight through Extended Reality_" https://doi.org/10.1145/3708359.3712127.
 
 Gliders are a specific type of aircraft made for soaring. The principle behind soaring is to stay afloat using only the energy the atmosphere provides. Glider pilots are confronted with several challenges specific to this kind of flight, the major one being the need to maintain adequate separation from other gliders while still operating the aircraft effectively and safely.
 In this paper, we present an XR intelligent interface, GlideRX, to help pilots manage traffic awareness and prevent mid-air collisions. It allows for better support of situational awareness with respect to
@@ -25,3 +25,11 @@ The `frontend/` folder contains two frontend application: _control-panel_ and _s
 
 ### Control Panel
 To launch the application, run the command: `path/to/GlideRX/frontend/control-panel$ mvn clean javafx:run`
+
+### Simulator
+Here you will find the code of the Unity project of the simulator and the five scenario proposed in the task-based user study. 
+The external packages used are:
+- [3D Realistic Terrain](https://assetstore.unity.com/packages/3d/environments/landscapes/3d-realistic-terrain-free-182593)
+- [Aircraft Physics](https://github.com/gasgiant/Aircraft-Physics)
+- [Sailplane glider model](https://assetstore.unity.com/packages/3d/vehicles/air/underpoly-free-sailplane-glider-264253?srsltid=AfmBOopRqPgBsstZeRyJanxWBEYS088mKfmP2si07ZlA5iWKcoiIEvXw)
+- [Sound effect](https://sound-effects.bbcrewind.co.uk/)
