@@ -48,48 +48,11 @@ public class App extends Application {
     
     @Override
     public void start(Stage stage) throws IOException {
-        /*
-        try (Connection connection = DatabaseUtil.getConnection()) {
-            System.out.println("Connected to the database!");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        */
-        /*
-        EntityManager em = DatabaseHelper.getEntityManager();
-        List<Trajectory> trajectories = null;
-        List<TrajectoryMapLayer> trajectoriesMapLayers = new ArrayList<>();
-        try {
-            em.getTransaction().begin();
-            // Create JPQL query
-            Query query = em.createQuery("SELECT t FROM Trajectory t");
-            trajectories = query.getResultList();
-            em.getTransaction().commit();
-        } catch (Exception e) {
-            if (em.getTransaction().isActive()) {
-                em.getTransaction().rollback();
-            }
-            e.printStackTrace();
-        } finally {
-            DatabaseHelper.closeEntityManager();
-        }
-        for (Trajectory trajectory: trajectories) {
-            System.out.println(trajectory.getName());
-            trajectoriesMapLayers.add(trajectory.getTrajectoryMapLayer());
-            for (PredictedStateVector predictedStateVector: trajectory.getPredictedStateVectors())
-                System.out.println(predictedStateVector);
-        }
-        */
         
         MapPoint LIQN = new MapPoint(42.4272, 12.8517);
         mapView = new MapView();
         mapView.setCenter(LIQN);
         mapView.setZoom(12);
-        /*
-        for (TrajectoryMapLayer trajectoryMapLayer : trajectoriesMapLayers) {
-            mapView.addLayer(trajectoryMapLayer);
-        }
-        */
         
         VBox rightPanel = new VBox();
         rightPanel.setMaxWidth(250);
@@ -121,32 +84,16 @@ public class App extends Application {
         root.setOrientation(Orientation.VERTICAL);
         root.setDividerPositions(0.65);
         root.getItems().addAll(mapAndStats, FLARMLog);
-        // root.setBottom(term);
         
         Scene scene = new Scene(root, 800, 600);
         scene.getStylesheets().add(getClass().getResource("control-panel-styles.css").toExternalForm());
         rightPanel.prefWidthProperty().bind(scene.widthProperty().multiply(0.2));
-        // FLARMLog.prefHeightProperty().bind(scene.heightProperty().multiply(0.1));
         
         stage.setTitle("GlideRX Control Panel");
         stage.setScene(scene);
         stage.show();
         
         showBlockingDialogWithTask(stage);
-        // startRabbitMQConsumer();
-        // dbUpdater.startQuerying();
-        /*
-        new Thread(() -> {
-            try {
-                Thread.sleep(2000);
-                javafx.application.Platform.runLater(() -> FLARMLog.appendText("> New log entry: Task started.\n"));
-                Thread.sleep(2000);
-                javafx.application.Platform.runLater(() -> FLARMLog.appendText("> New log entry: Task completed.\n"));
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }).start();
-        */
     }
     
     private void showBlockingDialogWithTask(Stage owner) {
